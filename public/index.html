@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+    <script src="../node_modules/datamaps/dist/datamaps.ven.js"></script>
+</head>
+<body>
+<div id="venezuela" style="position: relative; width: 800px; height: 600px;"></div>
+<script>
+    var map = new Datamap({
+        element: document.getElementById('venezuela'),
+        scope: 'venezuela',
+            geographyConfig: {
+                popupOnHover: true,
+                highlightOnHover: true,
+                borderColor: '#444',
+                borderWidth: 0.5,
+                dataUrl: './assets/venezuela.topo.json'
+                //dataJson: topoJsonData
+            },
+            fills: {
+                'MAJOR': '#306596',
+                'MEDIUM': '#0fa0fa',
+                'MINOR': '#bada55',
+                defaultFill: '#dddddd'
+            },
+            data: {
+                'JH': { fillKey: 'MINOR' },
+                'MH': { fillKey: 'MINOR' }
+            },
+            setProjection: function (element) {
+                var projection = d3.geo.mercator()
+                    .center([-65.9718, 8.156421]) // always in [East Latitude, North Longitude]
+                    .scale(2500);
+                var path = d3.geo.path().projection(projection);
+                return { path: path, projection: projection };
+            }
+    });
+</script>
+</body>
+</html>

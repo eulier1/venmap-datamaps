@@ -1,0 +1,19 @@
+{
+  "name": "datamapswithd3",
+  "version": "1.0.0",
+  "description": "generate venezuela map with datamaps",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server --watch='./public' --open='./public/index.html'  "
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reilue/venmap-datamaps.git"
+  },
+  "author": "Eulier González",
+  "license": "MIT",
+  "dependencies": {
+    "datamaps": "^0.5.9",
+    "live-server": "^1.2.0"
+  }
+}
